@@ -14,9 +14,9 @@ import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
 import java.util.concurrent.TimeUnit
 
-class TrackerViewModel(sharedPreferences: SharedPreferences,
-                       var timerSub: MutableLiveData<String> = MutableLiveData()) : LifecycleViewModel(sharedPreferences) {
+class TrackerViewModel(sharedPreferences: SharedPreferences) : LifecycleViewModel(sharedPreferences) {
 
+    val timerSub: MutableLiveData<String> = MutableLiveData()
     private val startTimerActor = actor<TimerAction> { channel.consumeEach { startJob(it) } }
 
     private var timerJob = Job(androidJob)

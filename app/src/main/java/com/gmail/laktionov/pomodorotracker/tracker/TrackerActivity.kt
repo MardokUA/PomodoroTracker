@@ -3,7 +3,9 @@ package com.gmail.laktionov.pomodorotracker.tracker
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.gmail.laktionov.pomodorotracker.R
+import com.gmail.laktionov.pomodorotracker.core.Constants.ACTIVIY_TAG
 import com.gmail.laktionov.pomodorotracker.core.changeState
 import com.gmail.laktionov.pomodorotracker.core.swapText
 import com.gmail.laktionov.pomodorotracker.domain.TimerAction
@@ -22,7 +24,7 @@ class TrackerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pomodoro)
 
         viewModel = ViewModelFactory.INSTANCE.create(TrackerViewModel::class.java)
-
+        Log.d(ACTIVIY_TAG, "$viewModel")
         setupView()
         setupObservers()
     }
