@@ -7,7 +7,6 @@ class PomodoroApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         DependencyManager.initViewModelFactory(applicationContext)
     }
 }
