@@ -6,8 +6,8 @@ import android.content.SharedPreferences
 import com.gmail.laktionov.pomodorotracker.tracker.TrackerViewModel
 
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactory private constructor(
-        private val sharedPreferences: SharedPreferences) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory private constructor(private val sharedPreferences: SharedPreferences) :
+        ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return with(modelClass) {

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PomodoroTracker</string>
+
+    <string name="button_start_text">Start</string>
+    <string name="button_stop_text">Stop</string>
+
 </resources>
