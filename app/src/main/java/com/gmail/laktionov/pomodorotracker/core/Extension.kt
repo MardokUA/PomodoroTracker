@@ -14,7 +14,10 @@ fun View.onClick(capacity: Int = CAPACITY_SINGLE, action: suspend () -> Unit) {
 }
 
 fun AppCompatButton.changeState() = apply { isSelected = !isSelected }
+
 fun AppCompatButton.swapText(@StringRes textOne: Int,
                              @StringRes textTwo: Int) = apply {
     text = if (isSelected) context.getString(textOne) else context.getString(textTwo)
 }
+
+fun Long.formatValue(): String = if (this in 0..9) "0$this" else "$this"
