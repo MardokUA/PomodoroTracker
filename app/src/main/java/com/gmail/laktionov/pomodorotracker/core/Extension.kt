@@ -21,3 +21,5 @@ fun AppCompatButton.swapText(@StringRes textOne: Int,
 }
 
 fun Long.formatValue(): String = if (this in 0..9) "0$this" else "$this"
+fun Long.toMinutes(): Long = this / 1000 / 60
+fun Long.toSeconds(): Long = this / 1000 % 60

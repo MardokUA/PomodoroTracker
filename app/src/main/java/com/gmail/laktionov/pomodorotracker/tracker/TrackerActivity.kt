@@ -8,6 +8,7 @@ import com.gmail.laktionov.pomodorotracker.R
 import com.gmail.laktionov.pomodorotracker.core.changeState
 import com.gmail.laktionov.pomodorotracker.core.swapText
 import com.gmail.laktionov.pomodorotracker.domain.TimerAction
+import com.gmail.laktionov.pomodorotracker.domain.TimerSettings
 import com.gmail.laktionov.pomodorotracker.domain.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_pomodoro.*
 
@@ -21,14 +22,20 @@ class TrackerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pomodoro)
+
         viewModel = ViewModelProviders.of(this, ViewModelFactory.INSTANCE).get(TrackerViewModel::class.java)
+        viewModel.getSettings { fetchSettingsAsync(it) }
 
         setupView()
         setupObservers()
     }
 
+    private fun fetchSettingsAsync(settings: TimerSettings) {
+        timerView.text = settings.actionValues.getFormattedValues()
+    }
+
     private fun setupObservers() {
-        viewModel.timerSub.observe(this, Observer { consumeValue(it) })
+        viewModel.actionTimerSub.observe(this, Observer { consumeValue(it) })
     }
 
     private fun setupView() {

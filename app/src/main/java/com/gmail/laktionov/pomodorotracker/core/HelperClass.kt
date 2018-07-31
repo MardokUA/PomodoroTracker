@@ -2,6 +2,7 @@ package com.gmail.laktionov.pomodorotracker.core
 
 import android.arch.lifecycle.*
 import android.content.SharedPreferences
+import com.gmail.laktionov.pomodorotracker.domain.LocalSource
 import kotlinx.coroutines.experimental.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.channels.LinkedListChannel
@@ -30,11 +31,11 @@ class AndroidJob(lifecycle: Lifecycle) : Job by Job(), LifecycleObserver {
  * Custom [ViewModel] witch take care about cancellation of all background task's, when it destroys.
  * It creates own [LifecycleRegistry] and dispatches [Lifecycle.Event] in init() and onCleared() methods.
  *
- * @param sharedPrefs simple local storage
+ * @param localSource simple local storage
  * @param uiContext [CoroutineContext], stored in variable for further easier testing;
  * @param bgContext [CoroutineContext], stored in variable for further easier testing;
  */
-abstract class LifecycleViewModel(protected val sharedPrefs: SharedPreferences,
+abstract class LifecycleViewModel(protected val localSource: LocalSource,
                                   protected val uiContext: CoroutineContext = UI,
                                   protected val bgContext: CoroutineContext = CommonPool) : ViewModel(), LifecycleOwner {
 
