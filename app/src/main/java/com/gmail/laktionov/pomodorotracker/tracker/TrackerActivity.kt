@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.gmail.laktionov.pomodorotracker.R
+import com.gmail.laktionov.pomodorotracker.core.addChangeObserver
 import com.gmail.laktionov.pomodorotracker.core.changeState
 import com.gmail.laktionov.pomodorotracker.core.swapText
 import com.gmail.laktionov.pomodorotracker.domain.TimerAction
@@ -31,7 +32,7 @@ class TrackerActivity : AppCompatActivity() {
     }
 
     private fun fetchSettingsAsync(settings: TimerSettings) {
-        timerView.text = settings.actionValues.getFormattedValues()
+        timerActionTextView.text = settings.actionValues.getFormattedValues()
     }
 
     private fun setupObservers() {
@@ -50,5 +51,5 @@ class TrackerActivity : AppCompatActivity() {
         return if (timerStartStopButton.isSelected) start else stop
     }
 
-    private fun consumeValue(it: String?) = it?.let { timerView.text = it }
+    private fun consumeValue(it: String?) = it?.let { timerActionTextView.text = it }
 }

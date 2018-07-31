@@ -2,19 +2,21 @@ package com.gmail.laktionov.pomodorotracker.domain
 
 import com.gmail.laktionov.pomodorotracker.core.formatValue
 import com.gmail.laktionov.pomodorotracker.core.toMinutes
+import com.gmail.laktionov.pomodorotracker.core.toSeconds
 
 enum class TimerAction { START, STOP }
 
 data class TimerValues(var minutes: Long = DEFAULT_TIMER_VALUE,
                        var seconds: Long = DEFAULT_TIMER_VALUE) {
 
-    fun getFormattedValues() = "${minutes.formatValue()}:${seconds.formatValue()}"
+    fun getFormattedValues() = formatValues(minutes, seconds)
     fun getPeriod() = (seconds * 1000) + (minutes * 60 * 1000)
 
-    fun formatToMinutes(minutes: Long) = minutes.toMinutes()
-    fun formatToSeconds(seconds: Long) = seconds.toMinutes()
+    fun formatToMinutes(leftTime: Long) = leftTime.toMinutes()
+    fun formatToSeconds(leftTime: Long) = leftTime.toSeconds()
 
     companion object {
+        fun formatValues(minutes: Long, seconds: Long) = "${minutes.formatValue()}:${seconds.formatValue()}"
         const val DEFAULT_TIMER_VALUE = 0L
     }
 }

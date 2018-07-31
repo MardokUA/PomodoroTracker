@@ -10,7 +10,7 @@
     tools:context=".tracker.TrackerActivity">
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/timerView"
+        android:id="@+id/timerActionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sana_sans_alt_black"
